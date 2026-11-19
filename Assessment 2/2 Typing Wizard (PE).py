@@ -8,6 +8,13 @@ health = 3 # how many words need to be typed to beat the monster
 timeLimit = 12 # total time allowed for all words to be spelled out
 start = time.time() #  gets the starting point of when the program started
 print("A monster has appeared!")
+
+#this is my refactoring that changes the colour codes to strings so that it is more legible
+RED = "\033[31m"
+BLUE = "\033[34m" 
+DEFAULT = "\033[0m"
+
+
 # main game loop that runs so long as the monster is alive
 while health > 0:
 # use of built-in function 1 (print())
@@ -31,13 +38,13 @@ while health > 0:
           word = word + random.choice(characters) # adds the rest on
     i += 1
   #collect user input
-  inputWord = input("Quick! Type the magic word '" + "\033[34m" + word + "\033[0m" + "' to fight back! ")
+  inputWord = input("Quick! Type the magic word '" + BLUE + word + DEFAULT + "' to fight back! ")
   # the strings before and after word here change the colour to blue then back to normal
   # check if word typed in time limit, if not then fail out
   elapsed = time.time() - start 
   # you need to minus the starting time to get elapsed time. time.time() returns a huge number that is reduced down to a usable one by this
   if elapsed > timeLimit:
-    print("\033[31m" + "Too slow! The monster reached you!")
+    print(RED + "Too slow! The monster reached you!")
     print(r"""     GAME OVER
      .--------.
     /  ()  ()  \
@@ -51,14 +58,14 @@ while health > 0:
     health-=1
     print("A direct hit!")
     if health == 1:
-      print("\033[31m" + "He's almost down!" + "\033[0m")
+      print(RED + "He's almost down!" + DEFAULT)
     if health > 0:
       print("Here he comes again! Get ready!")
       # use of built-in function 2 (round())
       print(round(timeLimit - elapsed), "seconds left!")
   #if word is wrong then fail out
   else:
-    print("\033[31m" + "You messed up the spell and the monster reached you!")
+    print(RED + "You messed up the spell and the monster reached you!")
     print(r"""     GAME OVER
      .--------.
     /  ()  ()  \
