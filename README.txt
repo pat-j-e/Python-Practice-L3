@@ -1,0 +1,1 @@
+A repository for work completed for the Python Programming with AI Level 3 Certificate, and general python practice programs.
